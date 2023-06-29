@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "784368044175",
+    "project_id": "photos-project-45a83",
+    "storage_bucket": "photos-project-45a83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784368044175:android:0cb1c82bc6fb581d0908fa",
+        "android_client_info": {
+          "package_name": "com.application.photos_download"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784368044175-a7u970k9apvk2f1lrs57ad3b9fvdee3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.application.photos_download",
+            "certificate_hash": "4228101616147816c197682614aca1a3bad22457"
+          }
+        },
+        {
+          "client_id": "784368044175-lsona0907hrmlahkuvsqpli3d9ojikq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqEG7hZN7ngGZey_8hOrWrD2oYtIecrsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784368044175-lsona0907hrmlahkuvsqpli3d9ojikq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
