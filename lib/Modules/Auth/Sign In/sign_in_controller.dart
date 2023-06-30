@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:photos_project/Data/Local/cache_manager.dart';
+
+import '../../../Data/Provider/Local/cache_manager.dart';
 
 class SignInController extends ChangeNotifier with CacheManager {
   GlobalKey<FormState> signInFormKey = GlobalKey();

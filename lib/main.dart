@@ -5,6 +5,8 @@ import 'package:photos_project/Modules/Auth/Sign%20In/sign_in_screen.dart';
 import 'package:photos_project/Modules/Auth/Sign%20Up/sign_up_controller.dart';
 import 'package:photos_project/Modules/Auth/Sign%20Up/sign_up_screen.dart';
 import 'package:photos_project/Modules/Home/home_controller.dart';
+import 'package:photos_project/Modules/Search%20Wallpapers/search_wallpaper_controller.dart';
+import 'package:photos_project/Modules/Wallpaper%20Details/wallpaper_details_controller.dart';
 import 'package:provider/provider.dart';
 
 import 'Modules/splash_screen.dart';
@@ -17,6 +19,10 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => SignInController()),
         ChangeNotifierProvider(create: (context) => SignUpController()),
+        ChangeNotifierProvider(
+            create: (context) => SearchWallpaperController()),
+        ChangeNotifierProvider(
+            create: (context) => WallpaperDetailsController()),
         ChangeNotifierProvider(
           create: (context) => HomeController(),
         ),
