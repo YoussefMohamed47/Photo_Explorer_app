@@ -5,9 +5,15 @@ import 'package:photos_project/Data/Local/cache_manager.dart';
 class SignInController extends ChangeNotifier with CacheManager {
   GlobalKey<FormState> signInFormKey = GlobalKey();
   bool isLoadingSignIn = false;
+  bool passwordVisible = true;
   final TextEditingController signInEmailController = TextEditingController();
   final TextEditingController signInPasswordController =
       TextEditingController();
+
+  void changePasswordVisibility() {
+    passwordVisible = !passwordVisible;
+    notifyListeners();
+  }
 
   Future<bool> signInWithEmailAndPassword({
     required BuildContext context,

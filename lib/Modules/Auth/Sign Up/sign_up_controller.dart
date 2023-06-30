@@ -5,6 +5,9 @@ import 'package:photos_project/Data/Local/cache_manager.dart';
 class SignUpController extends ChangeNotifier with CacheManager {
   GlobalKey<FormState> signUpFormKey = GlobalKey();
   bool isLoadingSignUp = false;
+  bool passwordVisible = true;
+  bool confirmPasswordVisible = true;
+
   final TextEditingController signUpEmailController = TextEditingController();
   final TextEditingController signUpPasswordController =
       TextEditingController();
@@ -13,6 +16,16 @@ class SignUpController extends ChangeNotifier with CacheManager {
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+
+  void changePasswordVisibility() {
+    passwordVisible = !passwordVisible;
+    notifyListeners();
+  }
+
+  void changeConfirmPasswordVisibility() {
+    confirmPasswordVisible = !confirmPasswordVisible;
+    notifyListeners();
+  }
 
   Future<bool> createUserWithEmailAndPassword(
       {required BuildContext context,

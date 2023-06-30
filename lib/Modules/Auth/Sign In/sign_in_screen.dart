@@ -50,6 +50,17 @@ class SignInScreen extends StatelessWidget {
                           signInController.signInPasswordController,
                       hintText: 'Password',
                       keyboardType: TextInputType.visiblePassword,
+                      obSecuredText: signInController.passwordVisible,
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          signInController.changePasswordVisibility();
+                        },
+                        child: Icon(
+                          signInController.passwordVisible
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined,
+                        ),
+                      ),
                       fieldValidator: (String? value) {
                         if (value!.isEmpty) {
                           return "Please Enter Password";

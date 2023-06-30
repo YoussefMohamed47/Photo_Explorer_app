@@ -138,6 +138,17 @@ class SignUpScreen extends StatelessWidget {
                     fieldController: signUpController.signUpPasswordController,
                     hintText: 'Password',
                     keyboardType: TextInputType.visiblePassword,
+                    obSecuredText: signUpController.passwordVisible,
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        signUpController.changePasswordVisibility();
+                      },
+                      child: Icon(
+                        signUpController.passwordVisible
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                      ),
+                    ),
                     fieldValidator: (String? value) {
                       if (value!.isEmpty) {
                         return "Please Enter Password";
@@ -155,6 +166,17 @@ class SignUpScreen extends StatelessWidget {
                         signUpController.signUpConfirmPasswordController,
                     hintText: 'Confirm Password',
                     keyboardType: TextInputType.visiblePassword,
+                    obSecuredText: signUpController.confirmPasswordVisible,
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        signUpController.changeConfirmPasswordVisibility();
+                      },
+                      child: Icon(
+                        signUpController.confirmPasswordVisible
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                      ),
+                    ),
                     fieldValidator: (String? value) {
                       if (value!.isEmpty) {
                         return "Please Re-Enter Password";
