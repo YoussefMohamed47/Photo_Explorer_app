@@ -31,7 +31,7 @@ class SearchWallpaperController extends ChangeNotifier {
     } catch (e) {
       isLoadingSearch = false;
       notifyListeners();
-      print("ERROR IN GETTING IMAGES ${e.toString()}");
+      print("ERROR IN Search GETTING IMAGES ${e.toString()}");
     }
   }
 

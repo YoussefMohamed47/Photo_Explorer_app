@@ -4,11 +4,19 @@ import 'package:photos_project/Modules/Wallpaper%20Details/wallpaper_details_con
 import 'package:provider/provider.dart';
 
 class WallpaperDetailsScreen extends StatelessWidget {
-  final Photos photoDetails;
+  final Photos? photoDetails;
+  final String? imageUrlOriginal;
+  final int? imageId;
+  final String? imageUrlLarge;
+  bool? isLiked;
 
-  const WallpaperDetailsScreen({
+  WallpaperDetailsScreen({
     super.key,
-    required this.photoDetails,
+    this.imageUrlOriginal,
+    this.imageId,
+    this.imageUrlLarge,
+    this.isLiked,
+    this.photoDetails,
   });
 
   @override
@@ -32,7 +40,7 @@ class WallpaperDetailsScreen extends StatelessWidget {
         alignment: Alignment.bottomRight,
         children: [
           Image.network(
-            photoDetails.src!.large2x!,
+            imageUrlLarge ?? photoDetails!.src!.large2x!,
             height: double.infinity,
             fit: BoxFit.cover,
             width: double.infinity,
@@ -67,7 +75,8 @@ class WallpaperDetailsScreen extends StatelessWidget {
                           child: IconButton(
                               onPressed: () {
                                 wallpaperDetailsController.downloadImg(
-                                    photoUrl: photoDetails.src!.original!,
+                                    photoUrl: imageUrlOriginal ??
+                                        photoDetails!.src!.original!,
                                     context: context);
                               },
                               icon: const Icon(
@@ -82,11 +91,26 @@ class WallpaperDetailsScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
                     child: IconButton(
                         onPressed: () {
-                          photoDetails.liked = !photoDetails.liked!;
-                          wallpaperDetailsController.update();
+                          if (isLiked == null) {
+                            photoDetails!.liked = !photoDetails!.liked!;
+                          } else {
+                            isLiked = !isLiked!;
+                          }
+
+                          wallpaperDetailsController.update(
+                              photoDetail: Photos(
+                                  id: imageId ?? photoDetails!.id,
+                                  liked: isLiked ?? photoDetails!.liked,
+                                  src: Src(
+                                    large2x: imageUrlLarge ??
+                                        photoDetails!.src!.large2x!,
+                                    original: imageUrlOriginal ??
+                                        photoDetails!.src!.original!,
+                                  )),
+                              favOrNot: isLiked ?? photoDetails!.liked);
                         },
                         icon: Icon(
-                          photoDetails.liked!
+                          isLiked ?? photoDetails!.liked!
                               ? Icons.favorite
                               : Icons.favorite_border,
                           color: Colors.black,

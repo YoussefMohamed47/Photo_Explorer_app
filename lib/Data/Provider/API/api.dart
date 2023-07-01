@@ -5,12 +5,10 @@ const baseUrl = 'https://api.pexels.com/v1/';
 class ApiClient {
   static Dio dio = Dio(BaseOptions(
       baseUrl: baseUrl,
-      //connectTimeout: 5000,// 60 seconds
       receiveDataWhenStatusError: true,
-      sendTimeout: Duration(milliseconds: 10000),
-      //5s
-      receiveTimeout: Duration(milliseconds: 60000),
-      connectTimeout: Duration(milliseconds: 10000),
+      sendTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+      connectTimeout: const Duration(seconds: 10),
       headers: {
         "Authorization":
             "Rs83LUyKpnbTdGwiScHICXFIl8sbbNNeyfe2vQ6gqM5fobTTAqY2VYVn",
