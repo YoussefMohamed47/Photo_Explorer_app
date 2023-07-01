@@ -9,7 +9,7 @@ import 'package:photos_project/Modules/Search%20Wallpapers/search_wallpaper_cont
 import 'package:photos_project/Modules/Wallpaper%20Details/wallpaper_details_controller.dart';
 import 'package:provider/provider.dart';
 
-import 'Modules/splash_screen.dart';
+import 'Modules/Splash/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

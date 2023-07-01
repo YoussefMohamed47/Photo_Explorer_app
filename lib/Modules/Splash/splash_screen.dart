@@ -3,7 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:photos_project/Modules/Auth/Sign%20In/sign_in_screen.dart';
 import 'package:photos_project/Modules/Home/home_screen.dart';
 
-import '../../../Data/Provider/Local/cache_manager.dart';
+import '../../../../Data/Provider/Local/cache_manager.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
