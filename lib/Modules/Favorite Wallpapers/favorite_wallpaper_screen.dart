@@ -1,10 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:photos_project/Data/Models/photos.dart';
+import 'package:photos_project/Data/Provider/Local/cache_manager.dart';
+import 'package:photos_project/Modules/Home/home_controller.dart';
+import 'package:provider/provider.dart';
 
 import '../Wallpaper Details/wallpaper_details_screen.dart';
 
-class FavoriteWallpapersScreen extends StatelessWidget {
+class FavoriteWallpapersScreen extends StatelessWidget with CacheManager {
   const FavoriteWallpapersScreen({super.key});
 
   @override
@@ -16,6 +21,7 @@ class FavoriteWallpapersScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         leading: InkWell(
           onTap: () {
+            Provider.of<HomeController>(context, listen: false).getImages();
             Navigator.pop(context);
           },
           child: const Icon(
@@ -29,7 +35,7 @@ class FavoriteWallpapersScreen extends StatelessWidget {
         child: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection('users')
-              .doc("spfFgoxFZTTReWLQD2sHPQkR9bg2")
+              .doc(FirebaseAuth.instance.currentUser!.uid)
               .collection('photos')
               .snapshots(),
           builder:
@@ -37,9 +43,12 @@ class FavoriteWallpapersScreen extends StatelessWidget {
             if (snapshot.hasError) {
               return Text('Something went wrong');
             }
+            if (snapshot.data == null || snapshot.data!.size == 0) {
+              return const Center(child: Text('No Favorite Images'));
+            }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
+              return const Center(child: Text("Loading"));
             }
             return GridView.builder(
               physics: const ScrollPhysics(),
@@ -57,12 +66,16 @@ class FavoriteWallpapersScreen extends StatelessWidget {
                         context,
                         PageTransition(
                           child: WallpaperDetailsScreen(
-                            imageId: snapshot.data!.docs[index]['image_id'],
-                            imageUrlLarge: snapshot.data!.docs[index]
-                                ['image_url_large'],
-                            imageUrlOriginal: snapshot.data!.docs[index]
-                                ['image_url_original'],
-                            isLiked: true,
+                            photoDetails: Photos(
+                              liked: true,
+                              id: snapshot.data!.docs[index]['image_id'],
+                              src: Src(
+                                large2x: snapshot.data!.docs[index]
+                                    ['image_url_large'],
+                                original: snapshot.data!.docs[index]
+                                    ['image_url_original'],
+                              ),
+                            ),
                           ),
                           type: PageTransitionType.rightToLeftWithFade,
                         ));

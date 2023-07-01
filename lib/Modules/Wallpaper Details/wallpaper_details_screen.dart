@@ -4,19 +4,11 @@ import 'package:photos_project/Modules/Wallpaper%20Details/wallpaper_details_con
 import 'package:provider/provider.dart';
 
 class WallpaperDetailsScreen extends StatelessWidget {
-  final Photos? photoDetails;
-  final String? imageUrlOriginal;
-  final int? imageId;
-  final String? imageUrlLarge;
-  bool? isLiked;
+  final Photos photoDetails;
 
   WallpaperDetailsScreen({
     super.key,
-    this.imageUrlOriginal,
-    this.imageId,
-    this.imageUrlLarge,
-    this.isLiked,
-    this.photoDetails,
+    required this.photoDetails,
   });
 
   @override
@@ -40,7 +32,7 @@ class WallpaperDetailsScreen extends StatelessWidget {
         alignment: Alignment.bottomRight,
         children: [
           Image.network(
-            imageUrlLarge ?? photoDetails!.src!.large2x!,
+            photoDetails!.src!.large2x!,
             height: double.infinity,
             fit: BoxFit.cover,
             width: double.infinity,
@@ -75,8 +67,7 @@ class WallpaperDetailsScreen extends StatelessWidget {
                           child: IconButton(
                               onPressed: () {
                                 wallpaperDetailsController.downloadImg(
-                                    photoUrl: imageUrlOriginal ??
-                                        photoDetails!.src!.original!,
+                                    photoUrl: photoDetails!.src!.original!,
                                     context: context);
                               },
                               icon: const Icon(
@@ -91,26 +82,14 @@ class WallpaperDetailsScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
                     child: IconButton(
                         onPressed: () {
-                          if (isLiked == null) {
-                            photoDetails!.liked = !photoDetails!.liked!;
-                          } else {
-                            isLiked = !isLiked!;
-                          }
+                          photoDetails!.liked = !photoDetails!.liked!;
 
                           wallpaperDetailsController.update(
-                              photoDetail: Photos(
-                                  id: imageId ?? photoDetails!.id,
-                                  liked: isLiked ?? photoDetails!.liked,
-                                  src: Src(
-                                    large2x: imageUrlLarge ??
-                                        photoDetails!.src!.large2x!,
-                                    original: imageUrlOriginal ??
-                                        photoDetails!.src!.original!,
-                                  )),
-                              favOrNot: isLiked ?? photoDetails!.liked);
+                              photoDetail: photoDetails,
+                              favOrNot: photoDetails!.liked);
                         },
                         icon: Icon(
-                          isLiked ?? photoDetails!.liked!
+                          photoDetails!.liked!
                               ? Icons.favorite
                               : Icons.favorite_border,
                           color: Colors.black,

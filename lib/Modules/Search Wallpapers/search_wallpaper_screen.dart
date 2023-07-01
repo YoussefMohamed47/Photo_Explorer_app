@@ -4,6 +4,7 @@ import 'package:photos_project/Modules/Search%20Wallpapers/search_wallpaper_cont
 import 'package:photos_project/Widgets/custom_text_field_controller.dart';
 import 'package:provider/provider.dart';
 
+import '../Home/home_controller.dart';
 import '../Wallpaper Details/wallpaper_details_screen.dart';
 
 class SearchWallpapersScreen extends StatefulWidget {
@@ -33,6 +34,8 @@ class _SearchWallpapersScreenState extends State<SearchWallpapersScreen> {
         backgroundColor: Colors.white,
         leading: InkWell(
           onTap: () {
+            Provider.of<HomeController>(context, listen: false).getImages();
+
             Navigator.pop(context);
           },
           child: const Icon(
