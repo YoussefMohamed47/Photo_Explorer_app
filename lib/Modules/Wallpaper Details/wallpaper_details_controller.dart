@@ -1,9 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 
 class WallpaperDetailsController extends ChangeNotifier {
   bool isDownloadingImg = false;
+  void update() {
+    notifyListeners();
+  }
+
   void downloadImg(
       {required String photoUrl, required BuildContext context}) async {
     isDownloadingImg = true;

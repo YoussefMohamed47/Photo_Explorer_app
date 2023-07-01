@@ -81,9 +81,14 @@ class WallpaperDetailsScreen extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: Colors.white,
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          photoDetails.liked = !photoDetails.liked!;
+                          wallpaperDetailsController.update();
+                        },
                         icon: Icon(
-                          Icons.favorite,
+                          photoDetails.liked!
+                              ? Icons.favorite
+                              : Icons.favorite_border,
                           color: Colors.black,
                         )),
                   ),
