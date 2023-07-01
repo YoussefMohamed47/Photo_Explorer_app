@@ -1,16 +1,50 @@
-# photos_project
+# Photo Explorer App
 
-A new Flutter project.
+This is a mobile application built with Flutter that allows users to browse and search for photos
+from the Unsplash API.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+## Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+--Flutter 3.10.0 or higher
+--Dart 3
+--Android Studio or Xcode
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Installing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1-Clone the repository:
+git clone https://github.com/YoussefMohamed47/Photo_Explorer_app.git
+2-Navigate to the project directory:
+cd Photo_Explorer_app
+3-Install the dependencies:
+flutter pub get
+
+## Running
+
+1- Connect your mobile device or start an emulator.
+2-Run the app:flutter run
+
+## Features
+
+-Browse photos by category, curated collections, or search by keyword.
+-View photos in fullscreen Mode.
+-Download photos to your device.
+
+## Built With
+
+-Flutter - The framework used
+-Dart - The programming language used
+-Unsplash API - Used to retrieve photos
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions or find any bugs, please open an issue or a
+pull request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+
+
