@@ -84,7 +84,7 @@ class WallpaperDetailsScreen extends StatelessWidget {
                         onPressed: () {
                           photoDetails.liked = !photoDetails.liked!;
                           wallpaperDetailsController.update();
-                        }, //test
+                        },
                         icon: Icon(
                           photoDetails.liked!
                               ? Icons.favorite
